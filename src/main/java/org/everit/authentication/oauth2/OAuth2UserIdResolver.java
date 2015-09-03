@@ -16,9 +16,9 @@
 package org.everit.authentication.oauth2;
 
 /**
- * TODO rename interface? write/modify javadoc.
+ * The OAuth2 User ID Resolver to obtain an unique identifier from OAuth2 server.
  */
-public interface OAuth2RequestURIResolver {
+public interface OAuth2UserIdResolver {
 
   /**
    * Gets (obtain) userID from OAuth2 server which already unique in client login.
