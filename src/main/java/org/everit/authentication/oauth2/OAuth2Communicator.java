@@ -15,6 +15,8 @@
  */
 package org.everit.authentication.oauth2;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -23,21 +25,23 @@ import javax.servlet.http.HttpServletRequest;
 public interface OAuth2Communicator {
 
   /**
-   * Gets OAuth2 server full authorization uri with parameters.
+   * Build full authorization uri with parameters to OAuth2 server.
    *
    * @return the full authorization uri.
    */
-  String getAuthorizationUriWithParams();
+  String buildAuthorizationUri(String redirectUri);
+
+  String getProviderName();
 
   /**
    * Gets (obtain) userID from OAuth2 server which already unique in client login.
    *
    * @param accessTokenResponse
    *          the access token that can be used to query the information form the OAuth2 provider.
-   * 
-   * @return the unique user ID.
+   *
+   * @return the unique user ID, or <code>null</code> if not available
    */
-  String getUniqueUserId(AccessTokenResponse accessTokenResponse);
+  Optional<String> getUniqueUserId(AccessTokenResponse accessTokenResponse);
 
   /**
    * Reads the access token from OAuth2 authorization response.
@@ -45,8 +49,8 @@ public interface OAuth2Communicator {
    * @param req
    *          the {@link HttpServletRequest} which contains the OAuth2 server response when redirect
    *          to own server after authorize user.
-   * @return the {@link AccessTokenResponse}.
+   * @return the {@link AccessTokenResponse}, or <code>null</code> if not available
    */
-  AccessTokenResponse readAccessToken(HttpServletRequest req);
+  Optional<AccessTokenResponse> readAccessToken(HttpServletRequest req, String redirectUri);
 
 }
