@@ -89,15 +89,11 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.everit.osgi</groupId>
-      <artifactId>org.everit.osgi.resource.resolver.api</artifactId>
-      <version>2.0.0</version>
-    </dependency>
-    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
+
 </project>
