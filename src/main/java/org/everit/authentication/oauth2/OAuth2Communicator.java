@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Responsible to provide information from OAuth2 server.
+ * Responsible to communicate with the OAuth2 server and provide information from it.
  */
 public interface OAuth2Communicator {
 
@@ -33,7 +33,7 @@ public interface OAuth2Communicator {
   String buildAuthorizationURL(String redirectURL);
 
   /**
-   * Reads the access token from OAuth2 authorization response.
+   * Gets the access token from the OAuth2 Server using the authorization code.
    *
    * @param req
    *          the {@link HttpServletRequest} which contains the the authorization code used to get
