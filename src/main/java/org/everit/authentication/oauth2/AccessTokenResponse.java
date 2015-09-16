@@ -16,12 +16,12 @@
 package org.everit.authentication.oauth2;
 
 /**
- * Interface to get information from the OAuth2 access token reponse.
+ * A successful OAuth2 Access Token Response.
  */
 public interface AccessTokenResponse {
 
   /**
-   * Returns the access token provided by the OAuth2 server.
+   * Returns the access token issued by the authorization server.
    */
   String getAccessToken();
 
@@ -31,17 +31,18 @@ public interface AccessTokenResponse {
   String getAccessTokenType();
 
   /**
-   * Returns the access token expiration time in seconds. Recommended in RFC6749.
+   * Returns the lifetime in seconds of the access token. Recommended in RFC6749.
    */
   Long getExpiresIn();
 
   /**
-   * Returns the refresh token used to obtain new access token. Optional in RFC6749.
+   * Returns the refresh token, which can be used to obtain new access tokens using the same
+   * authorization grant. Optional in RFC6749.
    */
   String getRefreshToken();
 
   /**
-   * Returns the scope. See OAuth2 server and RFC6749.
+   * Returns the scope of the access token. Optional in RFC6749.
    */
   String getScope();
 

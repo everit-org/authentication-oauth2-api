@@ -16,38 +16,38 @@
 package org.everit.authentication.oauth2;
 
 /**
- * Provides the session attribute names stored in and read from the
- * {@link javax.servlet.http.HttpSession} by the authentication components.
+ * Provides the OAuth2 session attribute names stored in and read from the
+ * {@link javax.servlet.http.HttpSession} during the authentication process.
  */
 public interface OAuth2SessionAttributeNames {
 
   /**
-   * Returns the session attribute name of the oauth2 access token.
+   * Returns the session attribute name of the access token.
    */
   String accessToken();
 
   /**
-   * Returns the session attribute name of the oauth2 access token type.
+   * Returns the session attribute name of the access token type.
    */
   String accessTokenType();
 
   /**
-   * Returns the session attribute name of the oauth2 access token expires in.
+   * Returns the session attribute name of the access token expires in.
    */
   String expiresIn();
 
   /**
-   * Returns the session attribute name of the oauth2 provider.
+   * Returns the session attribute name of the provider.
    */
   String providerName();
 
   /**
-   * Returns the session attribute name of the oauth2 refresh token.
+   * Returns the session attribute name of the refresh token.
    */
   String refreshToken();
 
   /**
-   * Returns the session attribute name of the oauth2 scope.
+   * Returns the session attribute name of the scope.
    */
   String scope();
 

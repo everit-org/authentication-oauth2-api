@@ -25,32 +25,40 @@ import javax.servlet.http.HttpServletRequest;
 public interface OAuth2Communicator {
 
   /**
-   * Build full authorization uri with parameters to OAuth2 server.
+   * Builds the authorization URL used to redirect the user to the OAuth2 Authorization Server.
    *
-   * @return the full authorization uri.
+   * @param redirectURL
+   *          the URL where the user will be redirected after the OAuth2 process
    */
-  String buildAuthorizationUri(String redirectUri);
-
-  String getProviderName();
-
-  /**
-   * Gets (obtain) userID from OAuth2 server which already unique in client login.
-   *
-   * @param accessTokenResponse
-   *          the access token that can be used to query the information form the OAuth2 provider.
-   *
-   * @return the unique user ID, or <code>null</code> if not available
-   */
-  Optional<String> getUniqueUserId(AccessTokenResponse accessTokenResponse);
+  String buildAuthorizationURL(String redirectURL);
 
   /**
    * Reads the access token from OAuth2 authorization response.
    *
    * @param req
-   *          the {@link HttpServletRequest} which contains the OAuth2 server response when redirect
-   *          to own server after authorize user.
+   *          the {@link HttpServletRequest} which contains the the authorization code used to get
+   *          access token response.
+   * @param redirectURL
+   *          the URL where the user will be redirected after the OAuth2 process
+   *
    * @return the {@link AccessTokenResponse}, or <code>null</code> if not available
    */
-  Optional<AccessTokenResponse> readAccessToken(HttpServletRequest req, String redirectUri);
+  Optional<AccessTokenResponse> getAccessToken(HttpServletRequest req, String redirectURL);
+
+  /**
+   * Returns the unique provider name used by this communicator that identifies the OAuth2 Server.
+   */
+  String getProviderName();
+
+  /**
+   * Queries the unique (on the OAuth2 Server side) user identifier from OAuth2 Authorization
+   * Server.
+   *
+   * @param accessTokenResponse
+   *          the access token response that can be used to query the information
+   *
+   * @return the user ID, or <code>null</code> if not available
+   */
+  Optional<String> getUniqueUserId(AccessTokenResponse accessTokenResponse);
 
 }
